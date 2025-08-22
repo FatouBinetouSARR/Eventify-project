@@ -7,8 +7,6 @@
 # garder le dossier src/ et tout ce qu’il y a dedans
 !src/**
 
-# mais ignorer tout le reste à l'intérieur
-src/**
 
 # puis whitelist seulement ce que tu veux
 !src/components/header/Header.jsx
