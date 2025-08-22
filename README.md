@@ -1,69 +1,212 @@
-Eventify est une application web de gestion d’événements inspirée de Eventbrite.
-Elle permet aux organisateurs de créer, gérer et promouvoir leurs événements, et aux participants de consulter et s’inscrire facilement en ligne.
+# Eventify - Plateforme de Gestion d'Événements
 
-🚀 Fonctionnalités principales
-👤 Authentification & Sécurité
+## 🎯 Vue d'Ensemble
 
-Inscription / connexion par email + mot de passe
+Eventify est une plateforme complète de gestion d'événements permettant aux utilisateurs de créer, organiser et participer à des événements. Le projet est structuré en deux parties principales : un frontend React moderne et une API backend robuste.
 
-Gestion des rôles : participant vs organisateur
+## 🏗️ Architecture du Projet
 
-Accès sécurisé aux événements privés
+```
+eventify/
+├── frontend/                 # Application React
+│   ├── public/              # Fichiers statiques
+│   ├── src/                 # Code source React
+│   │   ├── components/      # Composants réutilisables
+│   │   ├── pages/          # Pages de l'application
+│   │   ├── hooks/          # Hooks personnalisés
+│   │   ├── context/        # Contextes React
+│   │   ├── services/       # Services API
+│   │   └── utils/          # Fonctions utilitaires
+│   ├── tailwind.config.js  # Configuration Tailwind CSS
+│   └── package.json        # Dépendances frontend
+├── backend/                 # API Node.js/Express
+│   ├── src/                # Code source de l'API
+│   │   ├── controllers/    # Contrôleurs API
+│   │   ├── models/         # Modèles de données
+│   │   ├── routes/         # Définition des routes
+│   │   ├── middleware/     # Middlewares personnalisés
+│   │   ├── utils/          # Fonctions utilitaires
+│   │   └── config/         # Configuration
+│   ├── prisma/             # Schéma et migrations DB
+│   └── package.json        # Dépendances backend
+└── README.md               # Documentation principale
+```
 
-🎟️ Côté participant
+## 🚀 Technologies Utilisées
 
-Parcourir les événements publics
+### Frontend
+- **React 18** - Bibliothèque UI moderne
+- **React Router** - Routage de l'application
+- **Tailwind CSS** - Framework CSS utilitaire
+- **PostCSS** - Outil de traitement CSS
 
-Filtrer par date, lieu, catégorie
+### Backend
+- **Node.js** - Runtime JavaScript
+- **Express.js** - Framework web
+- **Prisma** - ORM pour la base de données
+- **PostgreSQL** - Base de données relationnelle
+- **JWT** - Authentification par token
+- **bcryptjs** - Hashage des mots de passe
 
-Consulter la fiche d’un événement (détails, image, lieu, date…)
+## 📋 Fonctionnalités Principales
 
-S’inscrire à un événement en ligne
+### 👥 Gestion des Utilisateurs
+- Inscription et connexion sécurisées
+- Profils utilisateur personnalisables
+- Système de rôles (utilisateur, organisateur, admin)
 
-Voir la liste de ses inscriptions
+### 🎪 Gestion des Événements
+- Création et édition d'événements
+- Catégorisation et tags
+- Gestion des inscriptions et capacités
+- Système de favoris
 
-🗓️ Côté organisateur
+### 📍 Localisation et Géolocalisation
+- Adresses et coordonnées GPS
+- Recherche par localisation
+- Carte interactive des événements
 
-Créer, modifier, supprimer des événements
+### 🔔 Notifications
+- Notifications en temps réel
+- Rappels d'événements
+- Confirmations d'inscription
 
-Consulter la liste des participants inscrits
+## 🛠️ Installation et Configuration
 
-Dashboard avec statistiques (vues, inscriptions)
+### Prérequis
+- Node.js 18+ et npm
+- PostgreSQL 12+
+- Git
 
-(Bonus) Export CSV des participants
+### 1. Cloner le Projet
+```bash
+git clone <repository-url>
+cd Eventify-project
+```
 
-🛠️ Stack technique
+### 2. Configuration du Backend
+```bash
+cd backend
+npm install
 
-Frontend : React.js + Tailwind CSS
+# Créer le fichier .env
+cp .env.example .env
+# Éditer .env avec vos configurations
 
-Backend : Node.js (Express) ou Django
+# Configuration de la base de données
+npm run build:prisma
+npm run db:migrate
 
-Base de données : MongoDB ou PostgreSQL
+# Démarrer l'API
+npm run dev
+```
 
-Auth : JWT / Firebase Auth
+### 3. Configuration du Frontend
+```bash
+cd frontend
+npm install
 
-Déploiement : Vercel (Frontend) + Render/Heroku (Backend)
+# Démarrer l'application
+npm start
+```
 
-📂 Architecture des pages
+## 🌐 Accès aux Applications
 
-/ : Liste des événements publics (Accueil)
+- **Frontend** : http://localhost:3000
+- **Backend API** : http://localhost:5000
+- **Prisma Studio** : http://localhost:5555 (après `npm run db:studio`)
 
-/login – /register : Authentification
+## 📚 Documentation Détaillée
 
-/event/:id : Détails d’un événement
+- [Documentation Frontend](./frontend/README.md)
+- [Documentation Backend](./backend/README.md)
+- [Architecture du Projet](./ARCHITECTURE_DU_PROJET.md)
 
-/dashboard : Dashboard organisateur
+## 🔧 Scripts Disponibles
 
-/my-events : Événements auxquels le participant est inscrit
+### Frontend
+```bash
+npm start          # Démarre l'app en développement
+npm run build      # Construit l'app pour la production
+npm test           # Lance les tests
+```
 
-🎨 Design UI
+### Backend
+```bash
+npm start          # Démarre l'API en production
+npm run dev        # Démarre l'API en développement
+npm run db:migrate # Applique les migrations DB
+npm run db:studio  # Ouvre Prisma Studio
+npm test           # Lance les tests
+```
 
-Inspiré de Eventbrite
+## 🗄️ Base de Données
 
-Style sobre, clair et responsive (mobile-first)
+Le projet utilise PostgreSQL avec Prisma ORM pour :
+- Gestion des relations complexes
+- Migrations automatiques
+- Validation des données
+- Génération automatique du client
 
-Cartes visuelles pour chaque événement
+### Modèles Principaux
+- **User** - Utilisateurs et profils
+- **Event** - Événements et détails
+- **Category** - Catégories d'événements
+- **Registration** - Inscriptions aux événements
+- **Tag** - Tags de catégorisation
+- **Notification** - Notifications système
 
-✅ Objectif
+## 🔒 Sécurité
 
-Fournir une solution simple, moderne et intuitive pour connecter organisateurs et participants, en rendant la gestion d’événements plus fluide et accessible.
+- Authentification JWT sécurisée
+- Hashage des mots de passe avec bcrypt
+- Validation stricte des données
+- Protection CORS configurée
+- Rate limiting anti-DDoS
+- Headers de sécurité avec Helmet
+
+## 🧪 Tests
+
+- Tests unitaires avec Jest
+- Tests d'intégration API
+- Tests des composants React
+- Couverture de code
+
+## 🚀 Déploiement
+
+### Frontend
+- Build de production optimisé
+- Configuration des variables d'environnement
+- Déploiement sur plateforme statique
+
+### Backend
+- Configuration des variables d'environnement
+- Scripts de migration de base de données
+- Gestion des erreurs en production
+- Logs structurés
+
+## 🤝 Contribution
+
+1. Fork le projet
+2. Créer une branche feature (`git checkout -b feature/AmazingFeature`)
+3. Commit les changements (`git commit -m 'Add some AmazingFeature'`)
+4. Push vers la branche (`git push origin feature/AmazingFeature`)
+5. Ouvrir une Pull Request
+
+## 📄 Licence
+
+Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
+
+## 📞 Support
+
+Pour toute question ou support :
+- Créer une issue sur GitHub
+- Contacter l'équipe de développement
+
+## 🎉 Remerciements
+
+Merci à tous les contributeurs qui participent au développement d'Eventify !
+
+---
+
+**Eventify** - Rendez vos événements inoubliables ! 🎊
