@@ -1,0 +1,18 @@
+# ignorer tout
+*
+
+# garder .gitignore
+!.gitignore
+
+# garder le dossier src/ et tout ce qu’il y a dedans
+!src/**
+
+# mais ignorer tout le reste à l'intérieur
+src/**
+
+# puis whitelist seulement ce que tu veux
+!src/components/header/Header.jsx
+!src/components/header/nav/Search.jsx
+!src/components/header/nav/Logo.jsx
+!src/components/header/nav/Nav.jsx
+!src/components/header/nav/Connexion.jsx
